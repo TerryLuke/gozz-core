@@ -1,4 +1,4 @@
-module github.com/go-zing/gozz-core
+module github.com/terryluke/gozz-core
 
 go 1.16
 
