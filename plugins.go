@@ -108,12 +108,14 @@ func LoadExtension(filename string) (name string, err error) {
 	}
 	// register symbol type
 	switch v := symbol.(type) {
-	case Plugin:
-		name = v.Name()
-		RegisterPlugin(v)
-	case OrmSchemaDriver:
-		name = "orm-" + v.Name()
-		RegisterOrmSchemaDriver(v)
+	case *Plugin:
+		tp := *v
+		name = tp.Name()
+		RegisterPlugin(tp)
+	case *OrmSchemaDriver:
+		tp := *v
+		name = "orm-" + tp.Name()
+		RegisterOrmSchemaDriver(tp)
 	}
 	return
 }
